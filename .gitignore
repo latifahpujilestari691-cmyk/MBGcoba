@@ -5,3 +5,5 @@ __pycache__/
 .venv/
 venv/
 instance/
+.DS_Store
+app/static/uploads/
