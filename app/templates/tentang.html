@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% block title %}Tentang Kami — Petra Cookies{% endblock %}
+{% block meta_description %}Pelajari lebih lanjut tentang Petra Cookies, usaha rumahan kue homemade premium di Surakarta sejak 2015.{% endblock %}
+{% block meta_keywords %}tentang petra cookies, sejarah petra cookies, kue homemade surakarta, usaha kue rumahan solo{% endblock %}
+{% block og_title %}Tentang Petra Cookies — Kue Homemade Premium Surakarta{% endblock %}
+{% block og_description %}Petra Cookies — usaha rumahan kue homemade premium di Surakarta sejak 2015.{% endblock %}
+
+{% block extra_css %}
+<style>
+  .tentang-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .tentang-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 56px rgba(93,53,35,0.28);
+    border-color: var(--gold);
+  }
+  .tentang-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brown), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .tentang-card:hover::before { transform: scaleX(1); }
+  .tentang-card:hover .tentang-side h2 { color: var(--gold); }
+  .tentang-card:hover .tentang-divider { background: var(--gold); }
+  .tentang-card .tentang-side h2 { transition: color 0.3s ease; }
+  .tentang-divider-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+  }
+  .tentang-divider {
+    width: 2px;
+    height: 70%;
+    background: var(--border);
+    border-radius: 2px;
+  }
+  .tentang-side {
+    padding: 2.2rem 2rem;
+    flex: 1;
+    min-width: 0;
+  }
+  .tentang-side h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 1rem;
+  }
+  .tentang-side p {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 0.8rem;
+  }
+  .proses-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .proses-step .step-num {
+    background: var(--gold);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .proses-step .step-text strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+  .proses-step .step-text span {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .lokasi-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .lokasi-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    width: 100%;
+    max-width: 560px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .lokasi-card {
+    position: relative;
+  }
+  .lokasi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--brown), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    border-radius: var(--radius) var(--radius) 0 0;
+    z-index: 1;
+  }
+  .lokasi-card:hover::before { transform: scaleX(1); }
+  .lokasi-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 56px rgba(93,53,35,0.28);
+    border-color: var(--gold);
+  }
+  .lokasi-info h2 { transition: color 0.3s ease; }
+  .lokasi-card:hover .lokasi-info h2 { color: var(--gold); }
+  .lokasi-info {
+    padding: 1rem 1.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .lokasi-info h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 0;
+  }
+  .lokasi-card .map-wrap {
+    border-radius: 0;
+  }
+  .lokasi-card .map-wrap iframe {
+    height: 260px;
+  }
+  @media (max-width: 767px) {
+    .tentang-card { flex-direction: column; }
+    .tentang-divider-wrap { width: 100%; height: 24px; }
+    .tentang-divider { width: 70%; height: 2px; }
+    .tentang-side { padding: 1.5rem; }
+    .lokasi-card { max-width: 100%; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Tentang Petra Cookies</h1>
+  <p>Cerita di balik setiap gigitan manis</p>
+</div>
+
+<section class="py-5">
+  <div class="container">
+
+    <!-- Baris 1: 1 card dengan garis vertikal tidak full di tengah -->
+    <div class="tentang-card mb-4">
+      <!-- Kiri: Tentang Petra Cookies -->
+      <div class="tentang-side" style="display:flex;flex-direction:column;">
+        <h2>Tentang Petra Cookies</h2>
+        <p>
+          Petra Cookies menyediakan berbagai pilihan kue homemade, snack, dan hampers untuk kebutuhan pribadi, keluarga, maupun acara khusus. Produk kami dibuat menggunakan bahan pilihan dan diproses secara higienis untuk menghasilkan cita rasa yang berkualitas.
+        <p>
+          Kami melayani berbagai jenis pesanan, mulai dari cookies, brownies, bolu, roti, kue basah, snack box, hingga pesanan custom yang dapat disesuaikan dengan kebutuhan pelanggan. Dengan beragam pilihan produk dan layanan yang fleksibel, Petra Cookies siap menjadi bagian dari setiap momen spesial Anda.
+        </p>
+        <p>
+          Kami percaya bahwa setiap momen istimewa layak ditemani sajian yang berkualitas. Oleh karena itu, Petra Cookies senantiasa menjaga kualitas produk, ketepatan pesanan, dan kepuasan pelanggan agar setiap kue yang kami hadirkan dapat memberikan kesan yang berkesan bagi Anda dan orang-orang terdekat.
+        </p>
+        <div style="flex:1;"></div>
+        <a href="/produk" class="btn-gold" style="align-self:flex-start;">Lihat Produk Kami</a>
+      </div>
+
+      <!-- Garis vertikal tidak full -->
+      <div class="tentang-divider-wrap">
+        <div class="tentang-divider"></div>
+      </div>
+
+      <!-- Kanan: Proses Pembuatan -->
+      <div class="tentang-side" style="display:flex;flex-direction:column;">
+        <h2>Proses Pembuatan</h2>
+        <div class="proses-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Pemilihan Bahan</strong>
+            <span>Bahan baku dipilih secara teliti — tepung, mentega, telur, dan bahan lain berkualitas tinggi tanpa bahan pengawet.</span>
+          </div>
+        </div>
+        <div class="proses-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Pengolahan Adonan</strong>
+            <span>Adonan dibuat secara manual dengan resep khusus untuk menjaga cita rasa autentik dan konsisten.</span>
+          </div>
+        </div>
+        <div class="proses-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Pengolahan dan Kontrol Kualitas</strong>
+            <span>Setiap produk diproses dengan cermat dan melalui pengecekan kualitas agar menghasilkan cita rasa yang konsisten dan memuaskan.</span>
+          </div>
+        </div>
+        <div class="proses-step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Pengemasan</strong>
+            <span>Produk dikemas dengan rapi dan higienis menggunakan kemasan yang sesuai untuk menjaga kualitas serta keamanan selama penyimpanan dan pengiriman.</span>
+          </div>
+        </div>
+        <div class="proses-step" style="margin-bottom:0;">
+          <div class="step-num">5</div>
+          <div class="step-text">
+            <strong>Pengiriman</strong>
+            <span>Pesanan dapat diambil langsung atau diantar sesuai kesepakatan. Silakan hubungi kami untuk konfirmasi ketersediaan layanan antar ke lokasi Anda.
+
+</span>
+          </div>
+        </div>
+        <div style="flex:1;"></div>
+      </div>
+    </div>
+
+    <!-- Baris 2: Lokasi + Maps dalam 1 card, dipusatkan -->
+    <div class="lokasi-wrap">
+    <div class="lokasi-card">
+      <div class="lokasi-info">
+        <h2>📍 Lokasi Petra Cookies</h2>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440.9681109877414!2d110.78019021094325!3d-7.554634287627843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a15a4079a4fdd%3A0x5e417109401af05!2sPetra%20Cookies!5e0!3m2!1sen!2sid!4v1780442255916!5m2!1sen!2sid"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
