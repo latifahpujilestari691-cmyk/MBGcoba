@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} — Petra Cookies{% endblock %}
+{% block meta_description %}{{ article.title }} — tips dan info seputar kue dari Petra Cookies Surakarta.{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+  <div class="row g-4">
+
+    <!-- ARTIKEL UTAMA -->
+    <div class="col-lg-8">
+      <h1 class="section-title mb-2">{{ article.title }}</h1>
+      <p class="section-sub">
+        Oleh <strong>{{ article.penulis }}</strong>
+        {% if article.published_at %}&middot; {{ article.published_at.strftime('%d %B %Y') }}{% endif %}
+      </p>
+
+      <div class="blog-img-wrap mb-4">
+        {% if article.image %}
+          <img src="/static/uploads/{{ article.image }}" alt="{{ article.title }}" class="img-fluid rounded-3" />
+        {% else %}
+          <div class="blog-img-placeholder">📝</div>
+        {% endif %}
+      </div>
+
+      <div class="article-content">
+        {{ article.content | replace('\n', '<br>') | safe }}
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="col-lg-4">
+      <div class="sidebar-box">
+        {% if other_articles %}
+        <h3 class="sidebar-title">Artikel Lainnya</h3>
+        {% for a in other_articles %}
+        <a href="/blog/{{ a.slug }}" class="sidebar-article">
+          <div class="title">{{ a.title }}</div>
+          <div class="date">{{ a.published_at.strftime('%d %B %Y') if a.published_at else '' }}</div>
+        </a>
+        {% endfor %}
+        {% endif %}
+
+        <a href="https://wa.me/+6281313451583?text=Halo,%20Saya%20ingin%20menanyakan%20lebih%20detail%20terkait%20produk%20yang%20anda%20jual" target="_blank" class="btn-wa-lg mt-3 d-block text-center">
+          🛒 Pesan via WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
