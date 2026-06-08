@@ -1,9 +1,0 @@
-.env
-__pycache__/
-*.pyc
-*.pyo
-.venv/
-venv/
-instance/
-.DS_Store
-app/static/uploads/
