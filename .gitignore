@@ -1,9 +1,37 @@
-.env
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
 __pycache__/
 *.pyc
-*.pyo
-.venv/
+*.py[cod]
+*$py.class
+*.so
+.Python
 venv/
+.venv/
+env/
+ENV/
+.env
+
+# Flask
 instance/
-.DS_Store
-app/static/uploads/
+.webassets-cache
+
+# Flask Session
+flask_session/
+sessions/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database
+*.sql.backup
+*.db
